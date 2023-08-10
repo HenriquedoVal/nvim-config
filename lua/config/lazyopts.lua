@@ -1,4 +1,4 @@
-local opt = {
+local M = {
 	install = {
 		colorscheme = { "gruvbox" }
 	},
@@ -9,6 +9,7 @@ local opt = {
 		"gzip",
 		"matchit",
 		"tarPlugin",
+		-- "matchparen", -- faster
 		"netrwPlugin",
 		"tohtml",
 		"tutor",
@@ -16,4 +17,4 @@ local opt = {
 	}}}
 }
 
-return opt
+return M

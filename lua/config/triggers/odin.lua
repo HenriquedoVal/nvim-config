@@ -6,6 +6,9 @@ local M = {
 		local lspconfig = require('lspconfig')
 		lspconfig.ols.setup {capabilites = capabilities}
 
+		vim.api.nvim_command(
+			"nnoremap <buffer> <C-b> :!odin run %:h<CR>"
+		)
 		vim.api.nvim_command("LspStart")
 		vim.api.nvim_del_autocmd(id)
 	end

@@ -6,6 +6,7 @@ local M = {
 		local lspconfig = require('lspconfig')
 		lspconfig.csharp_ls.setup {capabililtes = capabilities}
 
+		vim.api.nvim_command("autocmd FileType cs nnoremap <buffer> <C-b> :!dotnet build<CR>")
 		vim.api.nvim_command("LspStart")
 		vim.api.nvim_del_autocmd(id)
 	end

@@ -19,7 +19,7 @@ local lazy = require("lazy")
 local plugins = require("config.plugins")
 local opts = require("config.lazyopts")
 
-lazy.setup(plugins, opt)
+lazy.setup(plugins, opts)
 
 require("gruvbox").setup({ transparent_mode = true })
 vim.cmd.colorscheme("gruvbox")

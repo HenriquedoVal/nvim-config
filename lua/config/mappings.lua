@@ -9,6 +9,15 @@ Toggle_theme = function()
 	local to_set = 'light'
 	if vim.opt.bg._value == 'light' then to_set = 'dark' end
 	vim.opt.bg = to_set
+
+	local light_state_path = vim.fn.stdpath('data') .. '/theme_state'
+	local fd = io.open(light_state_path, 'w')
+
+	if not fd then
+		return
+	end
+
+	fd.write(fd, to_set)
 end
 
 vim.keymap.set('n', '<leader>tt', Toggle_theme, {desc = 'Toggle light/dark theme'})
