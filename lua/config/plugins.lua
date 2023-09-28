@@ -1,4 +1,4 @@
-T = {
+local M = {
 	{
 		"ellisonleao/gruvbox.nvim",
 		priority = 1000,
@@ -43,18 +43,20 @@ T = {
 		'ii14/neorepl.nvim',
 		cmd = 'Repl'
 	},
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-		},
+    {
+        "nvim-tree/nvim-tree.lua",
+        version = "*",
+        -- lazy = false,
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+        config = function()
+            require("nvim-tree").setup {}
+        end,
 		keys = {
-			{'<leader>e', '<cmd>Neotree toggle<cr>', desc = 'Neotree toggle'}
+			{'<leader>e', '<cmd>NvimTreeToggle<cr>', desc = 'NvimTreeToggle'}
 		}
-	},
+    },
 	{
 		"jiaoshijie/undotree",
 		dependencies = {
@@ -109,7 +111,19 @@ T = {
 	{
 		"ray-x/lsp_signature.nvim",
 		lazy = "VeryLazy"
-	}
+	},
+	{
+		'glacambre/firenvim',
+		lazy = not vim.g.started_by_firenvim,
+		build = function()
+			vim.fn["firenvim#install"](0)
+		end
+	},
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {} -- this is equalent to setup({}) function
+    }
 }
 
-return T
+return M

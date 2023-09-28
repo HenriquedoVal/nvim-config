@@ -23,15 +23,19 @@ cmp.setup({
 	})
 })
 
+local cmp_map = cmp.mapping.preset.cmdline()
+cmp_map['<down>'] = cmp_map['<Tab>']
+-- cmp_map['<up>'] = cmp_map['<S-Tab>']
+
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
-	mapping = cmp.mapping.preset.cmdline(),
+	mapping = cmp_map,
 	sources = { { name = 'buffer' } }
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
-	mapping = cmp.mapping.preset.cmdline(),
+	mapping = cmp_map,
 	sources = cmp.config.sources(
 		{{ name = 'path' }},
 		{{ name = 'cmdline' }}

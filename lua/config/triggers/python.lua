@@ -23,6 +23,15 @@ local M = {
 			capabilities = capabilities
 		}
 
+		-- Will set for the next py files
+		vim.api.nvim_create_autocmd({"FileType"}, {
+			pattern = {"python"},
+			command = ":map <c-b> :pyfile %<cr>"
+		})
+
+		-- ... for the current
+		vim.cmd("nnoremap <buffer> <c-b> :pyfile %<cr>")
+
 		vim.api.nvim_command("LspStart")
 		vim.api.nvim_del_autocmd(id)
 	end

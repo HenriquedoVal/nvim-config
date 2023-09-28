@@ -15,12 +15,12 @@ local hexa_cmd = function()
 		Prev_ft = vim.opt.ft:get()
 		vim.api.nvim_command('%!xxd')
 		vim.opt.ft = 'xxd'
-		vim.api.nvim_command('LspStop')
+		pcall(vim.api.nvim_command, 'LspStop')
 	else
 		Hexa_state = false
 		vim.api.nvim_command('%!xxd -r')
 		vim.opt.ft = Prev_ft
-		vim.api.nvim_command('LspStart')
+		pcall(vim.api.nvim_command, 'LspStart')
 	end
 end
 
@@ -46,10 +46,10 @@ Pwsh_id = vim.api.nvim_create_autocmd(
 	{
 		pattern = 'ps1',
 		callback = function(_ev)
-			vim.defer_fn(function()
-				require('config.triggers.pwsh').setup(Pwsh_id)
-				end,
-				wait
+            vim.defer_fn(function()
+                require('config.triggers.pwsh').setup(Pwsh_id)
+                end,
+                wait
 			)
 		end
 	}
@@ -104,6 +104,20 @@ Cs_id = vim.api.nvim_create_autocmd(
 		callback = function(_ev)
 			vim.defer_fn(function()
 				require('config.triggers.c_sharp').setup(Cs_id)
+				end,
+				wait
+			)
+		end
+	}
+)
+
+Js_id = vim.api.nvim_create_autocmd(
+	{'FileType'},
+	{
+		pattern = 'javascript',
+		callback = function(_ev)
+			vim.defer_fn(function()
+				require('config.triggers.js').setup(Js_id)
 				end,
 				wait
 			)
