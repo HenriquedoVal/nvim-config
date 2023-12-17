@@ -24,7 +24,13 @@ local hexa_cmd = function()
 	end
 end
 
+
+local load_cmp = function()
+    require('config.after.cmp')
+end
+
 vim.api.nvim_create_user_command("Hexa", hexa_cmd, {})
+vim.api.nvim_create_user_command("LoadCmp", load_cmp, {})
 
 local wait = 10
 Odin_id = vim.api.nvim_create_autocmd(
@@ -118,6 +124,20 @@ Js_id = vim.api.nvim_create_autocmd(
 		callback = function(_ev)
 			vim.defer_fn(function()
 				require('config.triggers.js').setup(Js_id)
+				end,
+				wait
+			)
+		end
+	}
+)
+
+Json_id = vim.api.nvim_create_autocmd(
+	{'FileType'},
+	{
+		pattern = 'json',
+		callback = function(_ev)
+			vim.defer_fn(function()
+				require('config.triggers.json').setup(Json_id)
 				end,
 				wait
 			)

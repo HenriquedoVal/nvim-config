@@ -1,6 +1,6 @@
 local M = {
 	setup = function(id)
-		require('config.triggers.common').setup()
+		require('config.triggers.common')
 
 		-- local capabilities = require('cmp_nvim_lsp').default_capabilities()
 		-- local lspconfig = require('lspconfig')
@@ -15,8 +15,8 @@ local M = {
 			"nnoremap <buffer> <C-b> :!node %<CR>"
 		)
 
-		vim.api.nvim_command("LspStart")
-		vim.api.nvim_del_autocmd(id)
+		pcall(vim.api.nvim_command, "LspStart")
+		pcall(vim.api.nvim_del_autocmd, id)
 	end
 }
 

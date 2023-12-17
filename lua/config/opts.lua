@@ -17,7 +17,7 @@ vim.opt.expandtab = true
 -- Supress intro message
 vim.opt.shortmess:append('I')
 
--- Use 'cmp' completion float instead of native
+-- Use 'cmp's completion float instead of native one
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.ignorecase = true
 
@@ -56,7 +56,7 @@ vim.g.firenvim_config = {
 }
 
 -- Same statusline over windows
-if vim.g.started_by_firenvim == true then
+if vim.g.started_by_firenvim then
 	vim.o.laststatus = 0
 else
 	vim.o.laststatus = 3
@@ -65,11 +65,9 @@ end
 local light_state_path = vim.fn.stdpath('data') .. '/theme_state'
 local fd = io.open(light_state_path, 'r')
 
-if not fd then
-	return
-end
+if not fd then return end
 
-local is_light = fd.read(fd, '*a') == 'light'
+local is_light = fd:read('*a') == 'light'
 if is_light then
 	vim.opt.bg = 'light'
 end
