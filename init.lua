@@ -24,6 +24,6 @@ lazy.setup(plugins, opts)
 require("gruvbox").setup({ transparent_mode = true })
 vim.cmd.colorscheme("gruvbox")
 
-require("config.mappings")
 require("config.autocmds")
+require("config.mappings")
 require("config.opts")

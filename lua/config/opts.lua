@@ -62,6 +62,11 @@ else
 	vim.o.laststatus = 3
 end
 
+-- if vim.g.neovide then
+--     vim.g.neovide_scale_factor = 0.8
+--     vim.g.neovide_background_color = "#282828" -- mac only
+-- end
+
 local light_state_path = vim.fn.stdpath('data') .. '/theme_state'
 local fd = io.open(light_state_path, 'r')
 

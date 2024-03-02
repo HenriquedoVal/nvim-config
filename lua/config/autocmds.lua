@@ -32,14 +32,15 @@ end
 vim.api.nvim_create_user_command("Hexa", hexa_cmd, {})
 vim.api.nvim_create_user_command("LoadCmp", load_cmp, {})
 
-local wait = 10
-Odin_id = vim.api.nvim_create_autocmd(
+local wait = 1
+vim.api.nvim_create_autocmd(
 	{'FileType'},
 	{
+        once = true;
 		pattern = 'odin',
 		callback = function(_ev)
 			vim.defer_fn(function()
-				require('config.triggers.odin').setup(Odin_id)  -- it will be defined by the time of the call
+				require('config.triggers.odin')
 				end,
 				wait
 			)
@@ -47,13 +48,14 @@ Odin_id = vim.api.nvim_create_autocmd(
 	}
 )
 
-Pwsh_id = vim.api.nvim_create_autocmd(
+vim.api.nvim_create_autocmd(
 	{'FileType'},
 	{
+        once = true;
 		pattern = 'ps1',
 		callback = function(_ev)
             vim.defer_fn(function()
-                require('config.triggers.pwsh').setup(Pwsh_id)
+                require('config.triggers.pwsh')
                 end,
                 wait
 			)
@@ -61,13 +63,14 @@ Pwsh_id = vim.api.nvim_create_autocmd(
 	}
 )
 
-Lua_id = vim.api.nvim_create_autocmd(
+vim.api.nvim_create_autocmd(
 	{'FileType'},
 	{
+        once = true;
 		pattern = 'lua',
 		callback = function(_ev)
 			vim.defer_fn(function()
-				require('config.triggers.luaft').setup(Lua_id)
+				require('config.triggers.luaft')
 				end,
 				wait
 			)
@@ -75,13 +78,14 @@ Lua_id = vim.api.nvim_create_autocmd(
 	}
 )
 
-Python_id = vim.api.nvim_create_autocmd(
+vim.api.nvim_create_autocmd(
 	{'FileType'},
 	{
+        once = true;
 		pattern = 'python',
 		callback = function(_ev)
 			vim.defer_fn(function()
-				require('config.triggers.python').setup(Python_id)
+				require('config.triggers.python')
 				end,
 				wait
 			)
@@ -89,13 +93,14 @@ Python_id = vim.api.nvim_create_autocmd(
 	}
 )
 
-C_id = vim.api.nvim_create_autocmd(
+vim.api.nvim_create_autocmd(
 	{'FileType'},
 	{
+        once = true;
 		pattern = 'c',
 		callback = function(_ev)
 			vim.defer_fn(function()
-				require('config.triggers.c').setup(C_id)
+				require('config.triggers.c')
 				end,
 				wait
 			)
@@ -103,13 +108,14 @@ C_id = vim.api.nvim_create_autocmd(
 	}
 )
 
-Cs_id = vim.api.nvim_create_autocmd(
+vim.api.nvim_create_autocmd(
 	{'FileType'},
 	{
+        once = true;
 		pattern = 'cs',
 		callback = function(_ev)
 			vim.defer_fn(function()
-				require('config.triggers.c_sharp').setup(Cs_id)
+				require('config.triggers.c_sharp')
 				end,
 				wait
 			)
@@ -117,13 +123,14 @@ Cs_id = vim.api.nvim_create_autocmd(
 	}
 )
 
-Js_id = vim.api.nvim_create_autocmd(
+vim.api.nvim_create_autocmd(
 	{'FileType'},
 	{
+        once = true;
 		pattern = 'javascript',
 		callback = function(_ev)
 			vim.defer_fn(function()
-				require('config.triggers.js').setup(Js_id)
+				require('config.triggers.js')
 				end,
 				wait
 			)
@@ -131,13 +138,30 @@ Js_id = vim.api.nvim_create_autocmd(
 	}
 )
 
-Json_id = vim.api.nvim_create_autocmd(
+vim.api.nvim_create_autocmd(
 	{'FileType'},
 	{
+        once = true;
 		pattern = 'json',
 		callback = function(_ev)
 			vim.defer_fn(function()
-				require('config.triggers.json').setup(Json_id)
+				require('config.triggers.json')
+				end,
+				wait
+			)
+		end
+	}
+)
+
+vim.api.nvim_create_autocmd(
+	{'FileType'},
+	{
+        once = true;
+		pattern = 'css',
+		callback = function(_ev)
+			vim.defer_fn(function()
+                require('config.after.treesitter')
+                require('config.after.cmp')
 				end,
 				wait
 			)

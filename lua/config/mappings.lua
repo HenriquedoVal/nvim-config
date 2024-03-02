@@ -17,7 +17,7 @@ Toggle_theme = function()
 		return
 	end
 
-	fd.write(fd, to_set)
+	fd:write(to_set)
 end
 
 vim.keymap.set('n', '<leader>tt', Toggle_theme, {desc = 'Toggle light/dark theme'})
