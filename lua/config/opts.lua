@@ -4,6 +4,14 @@ vim.opt.isfname:remove { ':' }
 -- Better :fin somefile
 vim.opt.path:append { '**' }
 
+-- vim.lsp.set_log_level("off")
+
+-- vim.g.syntax_on = nil
+-- vim.cmd("syntax off")
+
+-- vim.g.cpp_attributes_highlight = 1
+-- vim.g.cpp_member_highlight = 1
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 
@@ -20,6 +28,13 @@ vim.opt.shortmess:append('I')
 -- Use 'cmp's completion float instead of native one
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.ignorecase = true
+
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 20
+vim.g.netrw_alto = 1
+vim.g.netrw_altv = 1
+vim.g.netrw_browse_split = 4  -- act like "P" on <enter>
+vim.g.netrw_sizestyle = "H"
 
 -- `:h shell-powershell` modified
 -- vim.cmd [[
@@ -61,11 +76,6 @@ if vim.g.started_by_firenvim then
 else
 	vim.o.laststatus = 3
 end
-
--- if vim.g.neovide then
---     vim.g.neovide_scale_factor = 0.8
---     vim.g.neovide_background_color = "#282828" -- mac only
--- end
 
 local light_state_path = vim.fn.stdpath('data') .. '/theme_state'
 local fd = io.open(light_state_path, 'r')

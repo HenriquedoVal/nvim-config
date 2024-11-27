@@ -4,19 +4,8 @@ local M = {
 		priority = 1000,
 	},
 	{
-		'beauwilliams/statusline.lua',
-	},
-	{
-		'nvim-telescope/telescope.nvim',
-		tag = '0.1.2',
-		dependencies = { 'nvim-lua/plenary.nvim' },
-		cmd = 'Telescope',
-		keys = {
-			{'<leader>ff', '<cmd>Telescope find_files<cr>', desc = 'Telescope find_files'},
-			{'<leader>lg', '<cmd>Telescope live_grep<cr>', desc = 'Telescope live_grep'},
-			{'<leader>fb', '<cmd>Telescope buffers<cr>', desc = 'Telescope buffers'},
-			{'<leader>ht', '<cmd>Telescope help_tags<cr>', desc = 'Telescope help_tags'}
-		}
+		'logan-connolly/statusline.lua',
+        pin = true,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -43,20 +32,20 @@ local M = {
 		'ii14/neorepl.nvim',
 		cmd = 'Repl'
 	},
-    {
-        "nvim-tree/nvim-tree.lua",
-        version = "*",
-        -- lazy = false,
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
-        config = function()
-            require("nvim-tree").setup {}
-        end,
-		keys = {
-			{'<leader>e', '<cmd>NvimTreeToggle<cr>', desc = 'NvimTreeToggle'}
-		}
-    },
+  --   {
+  --       "nvim-tree/nvim-tree.lua",
+  --       version = "*",
+  --       -- lazy = false,
+  --       dependencies = {
+  --           "nvim-tree/nvim-web-devicons",
+  --       },
+  --       config = function()
+  --           require("nvim-tree").setup {}
+  --       end,
+		-- keys = {
+		-- 	{'<leader>e', '<cmd>NvimTreeToggle<cr>', desc = 'NvimTreeToggle'}
+		-- }
+  --   },
 	{
 		"jiaoshijie/undotree",
 		dependencies = {

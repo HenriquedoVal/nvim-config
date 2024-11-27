@@ -10,7 +10,7 @@ local M = {
 		"matchit",
 		"tarPlugin",
 		-- "matchparen", -- faster
-		"netrwPlugin",
+		-- "netrwPlugin",
 		"tohtml",
 		"tutor",
 		"zipPlugin"

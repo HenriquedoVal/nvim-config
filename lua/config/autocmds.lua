@@ -97,7 +97,7 @@ vim.api.nvim_create_autocmd(
 	{'FileType'},
 	{
         once = true;
-		pattern = 'c',
+		pattern = {'c', 'cpp'},
 		callback = function(_ev)
 			vim.defer_fn(function()
 				require('config.triggers.c')
@@ -160,8 +160,22 @@ vim.api.nvim_create_autocmd(
 		pattern = 'css',
 		callback = function(_ev)
 			vim.defer_fn(function()
-                require('config.after.treesitter')
-                require('config.after.cmp')
+                require('config.triggers.css')
+				end,
+				wait
+			)
+		end
+	}
+)
+
+vim.api.nvim_create_autocmd(
+	{'FileType'},
+	{
+        once = true;
+		pattern = 'html',
+		callback = function(_ev)
+			vim.defer_fn(function()
+                require('config.triggers.html')
 				end,
 				wait
 			)

@@ -38,6 +38,9 @@ cmp.setup.cmdline(':', {
 	mapping = cmp_map,
 	sources = cmp.config.sources(
 		{{ name = 'path' }},
-		{{ name = 'cmdline' }}
+		{{
+            name = 'cmdline',
+            option = { ignore_cmds = { 'terminal', '!', 'read!', 'read !' }}
+        }}
 	)
 })

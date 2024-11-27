@@ -20,7 +20,18 @@ Toggle_theme = function()
 	fd:write(to_set)
 end
 
+No_numbers = function()
+    vim.api.nvim_command("set nonumber")
+    vim.api.nvim_command("set norelativenumber")
+end
+
+vim.keymap.set('n', '<leader>e', "<cmd>Lex<cr>", {desc = "Open Netrw"})
+
+vim.keymap.set('n', '<leader>h', vim.diagnostic.hide, {desc = "Hide lsp diagnostics"})
+vim.keymap.set('n', '<leader>s', vim.diagnostic.show, {desc = "Show lsp diagnostics"})
+
 vim.keymap.set('n', '<leader>tt', Toggle_theme, {desc = 'Toggle light/dark theme'})
+vim.keymap.set('n', '<leader>n', No_numbers, {desc = 'Removes line numbers'})
 
 vim.keymap.set('n', '<leader>o',
 	"<Cmd>lua local r,_ = unpack(vim.api.nvim_win_get_cursor(0)); vim.api.nvim_buf_set_lines(vim.api.nvim_win_get_buf(0), r-1, r-1, true, {''}) <CR>k",

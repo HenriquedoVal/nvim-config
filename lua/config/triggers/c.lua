@@ -11,4 +11,10 @@ lspconfig.ccls.setup {
     capabililtes = capabilities
 }
 
+vim.api.nvim_set_keymap(
+    '', '<c-b>', ':term cl main.c && .\\main<cr>', {
+        desc = 'Build and run `main.c` using `cl.exe`'
+    }
+)
+
 pcall(vim.api.nvim_command, "LspStart")
