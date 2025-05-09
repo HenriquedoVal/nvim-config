@@ -1,8 +1,7 @@
 require('config.triggers.common')
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
-lspconfig.ols.setup {capabilites = capabilities}
+lspconfig.ols.setup { }
 
 vim.api.nvim_create_autocmd({"FileType"}, {
     pattern = {"odin"},

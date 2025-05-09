@@ -1,36 +1,39 @@
-local changecursor = function()
-	vim.opt.guicursor = "a:ver25,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"
-end
+--- User commands ---
 
-vim.api.nvim_create_autocmd({"VimLeave"}, {
-	callback = changecursor
-})
+local prev_ft = nil
+local hexa_state = false
 
-Prev_ft = nil
-Hexa_state = false
-
-local hexa_cmd = function()
-	if not Hexa_state then
-		Hexa_state = true
-		Prev_ft = vim.opt.ft:get()
+local function hexa_cmd()
+	if not hexa_state then
+		hexa_state = true
+		prev_ft = vim.opt.filetype:get()
 		vim.api.nvim_command('%!xxd')
 		vim.opt.ft = 'xxd'
 		pcall(vim.api.nvim_command, 'LspStop')
 	else
-		Hexa_state = false
+		hexa_state = false
 		vim.api.nvim_command('%!xxd -r')
-		vim.opt.ft = Prev_ft
+		vim.opt.ft = prev_ft
 		pcall(vim.api.nvim_command, 'LspStart')
 	end
 end
-
-
-local load_cmp = function()
-    require('config.after.cmp')
-end
-
 vim.api.nvim_create_user_command("Hexa", hexa_cmd, {})
-vim.api.nvim_create_user_command("LoadCmp", load_cmp, {})
+
+
+-- Proto in case I wanna deal with it
+-- local function man(arg)
+--     print('man was called')
+-- end
+-- vim.api.nvim_create_user_command("Man", man, {nargs = 1})
+
+
+--- Autocommands ---
+
+vim.api.nvim_create_autocmd({"VimLeave"}, {
+	callback = function()
+        vim.opt.guicursor = "a:ver25,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"
+    end
+})
 
 local wait = 1
 vim.api.nvim_create_autocmd(

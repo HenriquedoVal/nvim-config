@@ -1,23 +1,29 @@
--- Hightlight line number instead of showing sign on lsp error/warning
-vim.cmd [[
-  highlight! DiagnosticLineNrError  guifg=#FF0000 gui=bold
-  highlight! DiagnosticLineNrWarn   guifg=#FFA500 gui=bold
-  highlight! DiagnosticLineNrInfo   guifg=#00FFFF gui=bold
-  highlight! DiagnosticLineNrHint   guifg=#0000FF gui=bold
-
-  sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
-  sign define DiagnosticSignWarn  text= texthl=DiagnosticSignWarn  linehl= numhl=DiagnosticLineNrWarn
-  sign define DiagnosticSignInfo  text= texthl=DiagnosticSignInfo  linehl= numhl=DiagnosticLineNrInfo
-  sign define DiagnosticSignHint  text= texthl=DiagnosticSignHint  linehl= numhl=DiagnosticLineNrHint
-]]
+-- Hightlight line number instead of showing sign on diagnostic error/warning
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = '',
+            [vim.diagnostic.severity.WARN]  = '',
+            [vim.diagnostic.severity.INFO]  = '',
+            [vim.diagnostic.severity.HINT]  = '',
+        },
+        numhl = {
+            [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+            [vim.diagnostic.severity.WARN]  = 'Question',
+            [vim.diagnostic.severity.INFO]  = 'MoreMsg',
+            [vim.diagnostic.severity.HINT]  = 'Identifier',
+        }
+    }
+})
 
 -- Set borders to lsp hover
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+local function _open_floating_preview(contents, syntax, opts, ...)
 	opts = opts or {}
 	opts.border = opts.border or 'single'
 	return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
+vim.lsp.util.open_floating_preview = _open_floating_preview
 
 require('lspconfig.ui.windows').default_options = {
 	border = 'single'

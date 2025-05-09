@@ -1,6 +1,5 @@
 require('config.triggers.common')
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 
 lspconfig.lua_ls.setup {
@@ -23,7 +22,7 @@ lspconfig.lua_ls.setup {
             enable = false
         }
     }},
-    capabilities = capabilities
+    -- capabilities = capabilities
 }
 
 pcall(vim.api.nvim_command, "LspStart")

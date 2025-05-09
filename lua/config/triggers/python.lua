@@ -1,6 +1,6 @@
 require('config.triggers.common')
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 
 lspconfig.pylsp.setup {
@@ -18,7 +18,7 @@ lspconfig.pylsp.setup {
             enabled = true
         }
     }}},
-    capabilities = capabilities
+    -- capabilities = capabilities
 }
 
 -- Will set for the next py files
