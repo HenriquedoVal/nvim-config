@@ -6,17 +6,20 @@ local M = {
 		border = "single"
 	},
 	performance = { rtp = { disabled_plugins = {
+        "editorconfig",
+		"gzip",
+        "man",
+		"matchit",
 		-- "matchparen", -- faster
 		-- "netrwPlugin",
-        "editorconfig",
+        "osc52",
         "rplugin",
-		"gzip",
-		"matchit",
+        -- "shada",
+        -- "spellfile",
 		"tarPlugin",
 		"tohtml",
 		"tutor",
 		"zipPlugin",
-        "man",
 	}}},
     rocks = { enabled = false }
 }

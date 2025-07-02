@@ -10,7 +10,8 @@ local M = {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		lazy = 'VeryLazy'
+		lazy = false,
+        branch = 'master'
 	},
 	{
 		'neovim/nvim-lspconfig',
@@ -54,6 +55,10 @@ local M = {
     -- {
     --     "stevearc/profile.nvim"
     -- },
+    {
+        'vuciv/golf',
+        cmd = 'Golf'
+    },
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
